@@ -8,7 +8,7 @@ public class Post {
     @SerializedName("currencyCodeA")
     @Expose
     private int currencyCodeA;
-    @SerializedName("currencyCodeA")
+    @SerializedName("currencyCodeB")
     @Expose
     private int currencyCodeB;
     @SerializedName("date")
@@ -20,7 +20,7 @@ public class Post {
     @SerializedName("rateCross")
     @Expose
     private double rateCross;
-    @SerializedName("rateCross")
+    @SerializedName("rateSell")
     @Expose
     private double rateSell;
 
