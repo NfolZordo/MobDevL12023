@@ -2,12 +2,16 @@ package com.example.myapplication;
 
 
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -19,6 +23,20 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        String[] c = { "UA - Українська гривня", "USD - Долар США", "Євро", "Фунт", "PLN - Польський злотий"};
+        Spinner currency1 = findViewById(R.id.currency1);
+        Spinner currency2 = findViewById(R.id.currency2);
+        EditText sumET = findViewById(R.id.sum);
+        EditText resultET = findViewById(R.id.result);
+        EditText courseET = findViewById(R.id.course);
+        RadioGroup radioGroup = findViewById(R.id.radioGroup);
+        RadioButton buyRB = findViewById(R.id.buy);
+        RadioButton sellRB = findViewById(R.id.sell);
+        RadioButton nbuRB = findViewById(R.id.nbu);
+        ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, c);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        currency1.setAdapter(adapter);
+        currency2.setAdapter(adapter);
 
         NetworkService.getInstance()
                 .getJSONApi()
@@ -30,8 +48,6 @@ public class MainActivity extends AppCompatActivity {
                         for(Post p : post) {
                             System.out.println(p.getCurrencyCodeA());
                         }
-//                        System.out.println(post.getCurrencyCodeA());
-
 //                        textView.append(post.getId() + "\n");
 //                        textView.append(post.getUserId() + "\n");
 //                        textView.append(post.getTitle() + "\n");
