@@ -15,10 +15,7 @@ import android.widget.Spinner;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.gson.Gson;
-
 import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -41,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         currencySp1.setAdapter(adapter);
         currencySp2.setAdapter(adapter);
-
 
         NetworkService.getInstance()
                 .getJSONApi()
